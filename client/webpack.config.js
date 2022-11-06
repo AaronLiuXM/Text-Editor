@@ -23,7 +23,7 @@ module.exports = () => {
         title: "Text Editor",
       }),
       new InjectManifest({
-        swSrc: "/src-sw.js",
+        swSrc: "./src-sw.js",
         swDest: "service-worker.js",
       }),
       new WebpackPwaManifest({
@@ -32,12 +32,12 @@ module.exports = () => {
         description: "Record notes",
         background_color: "#7eb4e2",
         theme_color: "#7eb4e2",
-        start_url: "./",
-        publicPath: "./",
+        start_url: "/",
+        publicPath: "/",
         icons: [
           {
             src: path.resolve("src/images/logo.png"),
-            sizes: [96, 128, 192, 256, 384, 512],
+            sizes: [96],
             destination: path.join("assets", "icons"),
           },
         ],
@@ -46,10 +46,6 @@ module.exports = () => {
 
     module: {
       rules: [
-        {
-          test: /\.(png|svg|jpg|jpeg|gif)$/i,
-          type: "asset/resource",
-        },
         {
           test: /\.css$/i,
           use: ["style-loader", "css-loader"],
